@@ -1,0 +1,132 @@
+
+
+{%include 'admin_header.html'%}
+<br><br><br><br><br><br><br><br>
+
+<center>
+    
+
+{%if data['up']%}
+<form method="post">
+    <table>
+        <tr>
+            <th>Sub category name</th>
+            <td><input type="text" name="Subcategoryname" value="{{data['up'][0]['sub_category_name']}}" class="form-control"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><center><input type="submit" value="Submit" name="up" class="btn btn-success" style="background-color: #FEA116;"></center></td>
+        </tr>
+    </table>   
+</form>
+{%else%}
+
+<form method="post">
+<table>
+<h1>ADMIN ROOM SUB CATEGORY</h1>
+<tr>
+    <th>Sub category name</th>
+    <td><input type="text" name="Subcategoryname" class="form-control"></td>
+</tr>
+<tr>
+    <td align="center" colspan="2"><center><input type="submit" value="Submit" name="Register" class="btn btn-success" style="background-color: #FEA116;"></center></td>
+</tr>
+</table>
+</form>
+<br><br>
+<table border="2">
+<tr>
+    <th>Sl No.</th>
+    <th>Subcategoryname</th>
+    <th></th>
+    <th></th>
+</tr>
+{%for i in data['sub']%}
+<tr>
+    <td>{{loop.index}}</td>
+    <td>{{i['sub_category_name']}}</td>
+
+    <td><a href="?action=update&ids={{i['sub_category_id']}}">Update</a></td>
+    <td><a href="?action=delete&ids={{i['sub_category_id']}}">Delete</a></td>
+
+
+</tr>
+
+{%endfor%} 
+</table>
+{%endif%}
+</center>
+<br><br><br><br><br><br><br><br>
+
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-image: url('/static/bggng.png');
+        margin: 0;
+        padding: 0;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    form {
+        width: 50%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+        background-color:#0F172B;
+        color: #ffffff;
+        height: 50px;
+    }
+
+    tr:hover {
+        background-color: rgba(34, 31, 70, 0.108);
+    }
+
+    a {
+        text-decoration: none;
+        color: #3498db;
+        transition: color 0.3s;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #2980b9;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+        }
+    }
+</style>
+
+{%include 'footer.html'%}

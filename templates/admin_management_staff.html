@@ -1,0 +1,230 @@
+{%include 'admin_header.html'%}
+<br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<center>
+    {% if data['up'] %}
+
+    <form method="post" enctype="multipart/form-data">
+        <table>
+            <h1>ADMIN MANAGEMENT STAFF</h1>
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="fname" value="{{data['up'][0]['fname']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input type="text" name="lname" value="{{data['up'][0]['lname']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td><input type="text" name="place" value="{{data['up'][0]['place']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>phone</th>
+                <td><input type="text" name="phone" value="{{data['up'][0]['phone']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td><input type="text" name="email" value="{{data['up'][0]['email']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>designation</th>
+                <td><input type="text" name="designation" value="{{data['up'][0]['designation']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>image</th>
+                <td><input type="file" name="image" value="{{data['up'][0]['image']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Date of joining</th>
+                <td><input type="text" name="doj" value="{{data['up'][0]['doj']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>username</th>
+                <td><input type="text" name="username" value="{{data['up'][0]['username']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>password</th>
+                <td><input type="password" name="password" value="{{data['up'][0]['password']}}" class="form-control"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><center><input type="submit" value="Submit" name="upd" class="btn btn-success" style="background-color: #FEA116;"></center></td>
+            </tr>
+        </table>
+    </form>
+
+    {% else %}
+    <form method="post" enctype="multipart/form-data">
+        <table>
+            <h1>ADMIN MANAGEMENT STAFF</h1>
+            <tr>
+                <th>FIRST NAME</th>
+                <td><input type="text" name="fname" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>LAST NAME</th>
+                <td><input type="text" name="lname" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>PLACE</th>
+                <td><input type="text" name="place" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>PHONE</th>
+                <td><input type="text" name="phone" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>EMAIL</th>
+                <td><input type="text" name="email" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>DESIGNATION</th>
+                <td><input type="text" name="designation" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>IMAGE</th>
+                <td><input type="file" name="image" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>DATE OF JOINING</th>
+                <td><input type="text" name="doj" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>USERNAME</th>
+                <td><input type="text" name="username" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>PASSWORD</th>
+                <td><input type="password" name="password" class="form-control"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><center><input type="submit" value="Submit" name="Register" class="btn btn-success" style="background-color: #FEA116;"></center></td>
+            </tr>
+        </table>
+    </form>
+<br><br>
+
+        <table style="width: 80%;">
+            <tr>
+                <th>SL.NO</th>
+                <th>IMAGE</th>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>PLACE</th>
+                <th>PHONE</th>
+                <th>EMAIL</th>
+                <th>DESIGNATION</th>
+                <th>DATE OF JOINING</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {%for i in data['staff']%}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td><img src="{{i['image']}}" alt="" width="150px" height="150px"></td>
+                <td>{{i['fname']}}</td>
+                <td>{{i['lname']}}</td>
+                <td>{{i['place']}}</td>
+                <td>{{i['phone']}}</td>
+                <td>{{i['email']}}</td>
+                <td>{{i['designation']}}</td>
+                
+                <td>{{i['doj']}}</td>
+                <td><a href="?action=update&sid={{i['staff_id']}}" class="btn btn-success">Update</a></td>
+                <td><a href="?action=delete&sid={{i['staff_id']}}" class="btn btn-danger">Delete</a></td>
+
+
+            </tr>
+            {%endfor%}
+        </table>
+
+    </center>
+    {% endif %}
+
+</body>
+
+</html>
+<br><br><br><br><br><br><br><br>
+
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-image: url('/static/bggng.png');
+        margin: 0;
+        padding: 0;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    form {
+        width: 50%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+        background-color:#0F172B;
+        color: #ffffff;
+        height: 50px;
+    }
+
+    tr:hover {
+        background-color: rgba(34, 31, 70, 0.108);
+    }
+
+    a {
+        text-decoration: none;
+        color: #3498db;
+        transition: color 0.3s;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #2980b9;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+        }
+    }
+</style>
+
+{%include 'footer.html'%}

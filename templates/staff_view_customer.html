@@ -1,0 +1,100 @@
+{%include 'staff_header.html'%}
+<br><br><br><br>
+     <center></center>
+     <table align=""center border="1">
+        <h1>VIEW CUSTOMERS</h1>
+        <tr>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>PLACE</th>
+            <th>PHONE</th>
+        
+            <th>EMAIL</th>
+        </tr>
+        {%for i in data['view']%}
+        <tr>
+        
+            <td>{{i['fname']}}</td>
+            <td>{{i['lname']}}</td>
+            <td>{{i['place']}}</td>
+            <td>{{i['phone']}}</td>
+            <td>{{i['email']}}</td>
+        </tr>
+        {%endfor%} 
+
+    </table>
+      <br><br><br><br><br><br><br><br><br><br>
+
+
+          <style>
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background-image: url('/static/bggng.png');
+                margin: 0;
+                padding: 0;
+        
+                background-repeat: no-repeat;
+                background-size: cover;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+            }
+        
+            form {
+                width: 50%;
+                overflow-x: auto;
+            }
+        
+            table {
+                width: 100%;
+                margin-top: 20px;
+                border-collapse: collapse;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                background-color: #ffffff;
+                border-radius: 16px;
+                overflow: hidden;
+            }
+        
+            th,
+            td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #e0e0e0;
+            }
+        
+            th {
+                background-color:#0F172B;
+                color: #ffffff;
+                height: 50px;
+            }
+        
+            tr:hover {
+                background-color: rgba(34, 31, 70, 0.108);
+            }
+        
+            a {
+                text-decoration: none;
+                color: #3498db;
+                transition: color 0.3s;
+                font-weight: bold;
+            }
+        
+            a:hover {
+                color: #2980b9;
+            }
+        
+            /* Responsive styles */
+            @media only screen and (max-width: 600px) {
+                table {
+                    width: 100%;
+                }
+        
+                th,
+                td {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        </style>
+        
+        {%include 'footer.html'%}
